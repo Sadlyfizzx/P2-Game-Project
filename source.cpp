@@ -243,9 +243,7 @@ int main()
 	int enemydir = 1; // enemy direction (1 for right, -1 for left)
 	border(x);
 	ladder_level1(x);
-	hero(x, mr, mc);
-	health_of_hero(x);
-	display(x);
+	hero(x, mr, mc);	display(x);
 	for (;;)
 	{
 		while (1)
