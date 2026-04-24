@@ -3,9 +3,9 @@
 using namespace std;
 
 // Game Settings //
-int isJumping = 0;
-int jumpdone;
-int pos;
+int isJumping = 0; // to check if the hero is jumping or not
+int jumpdone; // to check if the jump is done or not
+int pos; // save the position of the hero when he starts jumping
 int velocety = 3; //controls jump height
 
 void display(char x[][120])
@@ -134,6 +134,7 @@ void enemy(char x[][120], int er, int ec)
 	x[23 + er][5 + ec] = '\\';
 }
 
+// Move the enemy, we can control the range of moving by edit 50 and 60
 void moveEnemy(int& enec, int& enedir)
 {
 	if (enedir == 1 && enec == 60)
@@ -147,8 +148,8 @@ int main()
 {
 	char x[25][120];
 	int mr = 0, mc = 0;
-	int enemyr = 0, enemyc = 55;
-	int enemydir = 1;
+	int enemyr = 0, enemyc = 55; // enemy row and column
+	int enemydir = 1; // enemy direction (1 for right, -1 for left)
 	border(x);
 	ladder_level1(x);
 	hero(x, mr, mc);
@@ -157,6 +158,7 @@ int main()
 	{
 		while (1)
 		{
+			// Game loop while not pressing any keys //
 			while (!_kbhit())
 			{
 				border(x);
