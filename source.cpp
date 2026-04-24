@@ -7,7 +7,7 @@ int isJumping = 0; // to check if the hero is jumping or not
 int jumpdone; // to check if the jump is done or not
 int pos; // save the position of the hero when he starts jumping
 int velocety = 3; //controls jump height
-void display(char x[][120])//display
+void display(char x[][120])
 {
 	system("cls");
 	for (int r = 0; r < 25; r++)
@@ -20,7 +20,7 @@ void display(char x[][120])//display
 	}
 }
 
-void border(char x[][120])
+void border(char x[][120])//frame
 {
 	for (int r = 0; r < 25; r++)
 	{
@@ -44,18 +44,43 @@ void border(char x[][120])
 	}
 }
 
-void ladder_level1(char x[][120])
+void ladder_level1(char x[][120])//selm
 {
-	x[23][110] = '|';
+	x[23][109] = 179;
+	x[22][109] = 179;
+	x[21][109] = 179;
+	x[20][109] = 179;
+	x[19][109] = 179;
+	x[18][109] = 179;
+	x[17][109] = 179;
+	x[16][109] = 179;
+	x[23][113] = 179;
+	x[22][113] = 179;
+	x[21][113] = 179;
+	x[20][113] = 179;
+	x[19][113] = 179;
+	x[18][113] = 179;
+	x[17][113] = 179;
+	x[16][113] = 179;
 	x[22][111] = '-';
+	x[22][110] = '-';
 	x[22][112] = '-';
-	x[21][113] = '|';
-	x[20][114] = '-';
-	x[20][115] = '-';
-	x[19][116] = '|';
-	x[18][117] = '-';
-	x[18][118] = '-';
+	x[20][111] = '-';
+	x[20][110] = '-';
+	x[20][112] = '-';
+	x[18][111] = '-';
+	x[18][110] = '-';
+	x[18][112] = '-';
+	x[16][111] = '-';
+	x[16][110] = '-';
+	x[16][112] = '-';
+	x[15][114] = '-';
+	x[15][115] = '-';
+	x[15][116] = '-';
+	x[15][117] = '-';
+	x[15][118] = '-';
 }
+
 
 void hero(char x[][120], int mr, int mc)
 {
@@ -68,9 +93,9 @@ void hero(char x[][120], int mr, int mc)
 	x[23 + mr][2 + mc] = '/';
 }
 
-void moveHero(int& mr, int& mc, char c)
+void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 {
-	if (c == 'a' && mc > 1)
+	if (c == 'a' && mc > 1)//left
 	{
 		mc -= 3;
 		if (mc >= 105 && mr < 0)
