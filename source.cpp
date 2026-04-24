@@ -36,7 +36,13 @@ void border(char x[][120])//frame
 		x[r][0] = 186;
 		x[r][119] = 186;
 	}
-
+	x[3][55] = 'L';
+	x[3][56] = 'E';
+	x[3][57] = 'V';
+	x[3][58] = 'E';
+	x[3][59] = 'L';
+	x[3][60] = ' ';
+	x[3][61] = '1';
 	for (int c = 0; c < 120; c++)
 	{
 		x[0][c] = 205;
@@ -180,11 +186,11 @@ int main()
 	display(x);
 	for (;;)
 	{
-		while (1)
-		{
+		//	while (1)
+		//{
 			// Game loop while not pressing any keys //
-			while (!_kbhit())
-			{
+			//while (!_kbhit())
+			//{
 				border(x);
 				ladder_level1(x);
 				hero(x, mr, mc);
@@ -194,15 +200,14 @@ int main()
 				if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
 				{
 					cout << "Game Over" << endl;
-					break;
 				}
 
 				display(x);
 				moveEnemy(enemyc, enemydir);
-			}
+			//}
 			char movement = _getch();
 			moveHero(mr, mc, movement);
-		}
+		//}
 	}
 	return 0;
 }
