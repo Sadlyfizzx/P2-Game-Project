@@ -96,7 +96,7 @@ void hero(char x[][120], int mr, int mc)
 	x[23 + mr][2 + mc] = '/';
 }
 //editor fares
-void helth_of_hero(char x[][120])
+void style_health(char x[][120])
 {
 	x[4][3] = 'H';
 	x[4][4] = 'E';
@@ -131,6 +131,7 @@ void helth_of_hero(char x[][120])
 	x[4][28] = '0';
 	x[4][29] = '%';
 }
+//editor fares
 void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 {
 	if (c == 'a' && mc > 1)//left
@@ -178,7 +179,7 @@ void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 	}
 	}
 }
-//editor fares&&zeyad
+//editor fares&&ziad
 void jumpHero(int& mr)
 {
 	if (isJumping == 1)
@@ -205,7 +206,7 @@ void jumpHero(int& mr)
 		}
 	}
 }
-//editor zeyad
+//editor ziad
 void enemy(char x[][120], int er, int ec)
 {
 	x[22 + er][3 + ec] = '[';
@@ -215,7 +216,7 @@ void enemy(char x[][120], int er, int ec)
 	x[23 + er][3 + ec] = '/';
 	x[23 + er][5 + ec] = '\\';
 }
-//editor zeyad
+//editor ziad
 // Move the enemy, we can control the range of moving by edit 50 and 60
 void moveEnemy(int& enec, int& enedir)
 {
@@ -225,7 +226,10 @@ void moveEnemy(int& enec, int& enedir)
 		enedir = 1;
 	enec += enedir;
 }
-//editor zeyad
+//editor ziad
+void damage(char x[][120])
+{
+}
 int main()
 {
 	char x[25][120];
@@ -246,7 +250,7 @@ int main()
 					border(x);
 					ladder_level1(x);
 					hero(x, mr, mc);
-					helth_of_hero(x);
+					style_health(x);
 					jumpHero(mr);
 					enemy(x, enemyr, enemyc);
 					if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
@@ -255,6 +259,7 @@ int main()
 					}
 					display(x);
 					moveEnemy(enemyc, enemydir);
+					damage(x);
 			}
 			char movement = _getch();
 			moveHero(mr, mc, movement);
