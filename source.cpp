@@ -19,7 +19,7 @@ void display(char x[][120])
 		cout << endl;
 	}
 }
-
+//editor fares
 void border(char x[][120])//frame
 {
 	for (int r = 0; r < 25; r++)
@@ -29,10 +29,8 @@ void border(char x[][120])//frame
 			x[r][c] = ' ';
 		}
 	}
-	
 	for (int r = 0; r < 25; r++)
 	{
-
 		x[r][0] = 186;
 		x[r][119] = 186;
 	}
@@ -49,7 +47,7 @@ void border(char x[][120])//frame
 		x[24][c] = 205;
 	}
 }
-
+//editor fares
 void ladder_level1(char x[][120])//selm
 {
 	x[23][109] = 179;
@@ -86,8 +84,7 @@ void ladder_level1(char x[][120])//selm
 	x[15][117] = '-';
 	x[15][118] = '-';
 }
-
-
+//editor fares
 void hero(char x[][120], int mr, int mc)
 {
 	x[20 + mr][3 + mc] = 153;
@@ -98,35 +95,55 @@ void hero(char x[][120], int mr, int mc)
 	x[23 + mr][4 + mc] = '\\';
 	x[23 + mr][2 + mc] = '/';
 }
-
+//editor fares
 void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 {
 	if (c == 'a' && mc > 1)//left
 	{
 		mc -= 3;
-		if (mc >= 105 && mr < 0)
+		if (mr < 0 && mc < 105)//If he reaches the ladder, he won't move.
 		{
-			mr += 2;
+			mc += 3;
 		}
 	}
-
-	if (c == 'd' && mc < 114)
+	if (c == 'd' && mc < 111)//right
 	{
 		mc += 3;
-		if (mc > 105)
+		if (mc >= 104 && mc <= 106)//The first thing he does when he reaches the stairs is take the first step.
 		{
-			mr -= 2;
+
+				mr -= 2;
+				mc += 3;
+
+		}
+		else if (mc > 106 && mr > -10)
+		{
+			mr -= 1;			
+			mc += 2;
 		}
 	}
 
-	if (c == 'w')
+	if (c == 'w')	//upper
 	{
 		isJumping = 1;
 		jumpdone = 0;
 		pos = mr;
+		if (mr < 16&&mc>104)//climb the stairs
+		{
+			mr -= 2;
+			isJumping = 0;
+			jumpdone = 0;
+		}
+	}
+	if (mc > 104)
+	{
+	 if (c == 's' && mc >= 108)
+	{
+		mr +=2;
+	}
 	}
 }
-
+//editor fares&&zeyad
 void jumpHero(int& mr)
 {
 	if (isJumping == 1)
@@ -153,7 +170,7 @@ void jumpHero(int& mr)
 		}
 	}
 }
-
+//editor zeyad
 void enemy(char x[][120], int er, int ec)
 {
 	x[22 + er][3 + ec] = '[';
@@ -163,7 +180,7 @@ void enemy(char x[][120], int er, int ec)
 	x[23 + er][3 + ec] = '/';
 	x[23 + er][5 + ec] = '\\';
 }
-
+//editor zeyad
 // Move the enemy, we can control the range of moving by edit 50 and 60
 void moveEnemy(int& enec, int& enedir)
 {
@@ -173,7 +190,7 @@ void moveEnemy(int& enec, int& enedir)
 		enedir = 1;
 	enec += enedir;
 }
-
+//editor zeyad
 int main()
 {
 	char x[25][120];
@@ -186,28 +203,27 @@ int main()
 	display(x);
 	for (;;)
 	{
-		//	while (1)
-		//{
-			// Game loop while not pressing any keys //
-			//while (!_kbhit())
-			//{
-				border(x);
-				ladder_level1(x);
-				hero(x, mr, mc);
-				jumpHero(mr);
-				enemy(x, enemyr, enemyc);
-
-				if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
+		while (1)
+		{
+			//Game loop while not pressing any keys 
+			while (!_kbhit())
 				{
-					cout << "Game Over" << endl;
-				}
-
-				display(x);
-				moveEnemy(enemyc, enemydir);
-			//}
+					border(x);
+					ladder_level1(x);
+					hero(x, mr, mc);
+					jumpHero(mr);
+					enemy(x, enemyr, enemyc);
+					if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
+					{
+						cout << "Game Over" << endl;
+					}
+					display(x);
+					moveEnemy(enemyc, enemydir);
+			}
 			char movement = _getch();
 			moveHero(mr, mc, movement);
-		//}
+		}
+	
 	}
 	return 0;
 }
