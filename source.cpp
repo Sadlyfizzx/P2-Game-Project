@@ -7,7 +7,7 @@ int isJumping = 0; // to check if the hero is jumping or not
 int jumpdone; // to check if the jump is done or not
 int pos; // save the position of the hero when he starts jumping
 int velocety = 3; //controls jump height
-void display(char x[][120])//display
+void display(char x[][120])
 {
 	system("cls");
 	for (int r = 0; r < 25; r++)
