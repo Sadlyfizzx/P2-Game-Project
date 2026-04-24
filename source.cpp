@@ -2,11 +2,15 @@
 #include <conio.h>
 using namespace std;
 
-// Game Settings //
+// Game Settings - Editor Zeyad //
 int isJumping = 0; // to check if the hero is jumping or not
 int jumpdone; // to check if the jump is done or not
 int pos; // save the position of the hero when he starts jumping
 int velocety = 3; //controls jump height
+
+// Player Stats //
+int health = 100;
+
 void display(char x[][120])
 {
 	system("cls");
@@ -19,8 +23,9 @@ void display(char x[][120])
 		cout << endl;
 	}
 }
-//editor fares
-void border(char x[][120])//frame
+
+// editor fares
+void border(char x[][120]) // frame
 {
 	for (int r = 0; r < 25; r++)
 	{
@@ -47,8 +52,9 @@ void border(char x[][120])//frame
 		x[24][c] = 205;
 	}
 }
-//editor fares
-void ladder_level1(char x[][120])//selm
+
+// editor fares
+void ladder_level1(char x[][120]) //selm
 {
 	x[23][109] = 179;
 	x[22][109] = 179;
@@ -84,7 +90,8 @@ void ladder_level1(char x[][120])//selm
 	x[15][117] = '-';
 	x[15][118] = '-';
 }
-//editor fares
+
+// editor fares
 void hero(char x[][120], int mr, int mc)
 {
 	x[20 + mr][3 + mc] = 153;
@@ -96,7 +103,7 @@ void hero(char x[][120], int mr, int mc)
 	x[23 + mr][2 + mc] = '/';
 }
 //editor fares
-void style_health(char x[][120])
+void helth_of_hero(char x[][120])
 {
 	x[4][3] = 'H';
 	x[4][4] = 'E';
@@ -131,55 +138,56 @@ void style_health(char x[][120])
 	x[4][28] = '0';
 	x[4][29] = '%';
 }
-//editor fares
 void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 {
 	if (c == 'a' && mc > 1)//left
 	{
 		mc -= 3;
-		if (mr < 0 && mc < 105)//If he reaches the ladder, he won't move.
+		if (mr < 0 && mc < 105) // If hero reaches the ladder, he won't move.
 		{
 			mc += 3;
 		}
 	}
-	if (c == 'd' && mc < 111)//right
+	if (c == 'd' && mc < 111) // right
 	{
 		mc += 3;
-		if (mc >= 104 && mc <= 106)//The first thing he does when he reaches the stairs is take the first step.
+		if (mc >= 104 && mc <= 106) // The first thing he does when he reaches the stairs is take the first step.
 		{
 
-				mr -= 2;
-				mc += 3;
+			mr -= 2;
+			mc += 3;
 
 		}
 		else if (mc > 106 && mr > -10)
 		{
-			mr -= 1;			
+			mr -= 1;
 			mc += 2;
 		}
 	}
 
-	if (c == 'w')	//upper
+	if (c == 'w') // upper
 	{
 		isJumping = 1;
 		jumpdone = 0;
 		pos = mr;
-		if (mr < 16&&mc>104)//climb the stairs
+
+		if (mr < 16 && mc > 104) // climb the stairs
 		{
 			mr -= 2;
 			isJumping = 0;
 			jumpdone = 0;
 		}
 	}
+
 	if (mc > 104)
 	{
-	 if (c == 's' && mc >= 108)
-	{
-		mr +=2;
-	}
+		if (c == 's' && mc >= 108)
+		{
+			mr += 2;
+		}
 	}
 }
-//editor fares&&ziad
+//editor fares&&zeyad
 void jumpHero(int& mr)
 {
 	if (isJumping == 1)
@@ -206,7 +214,7 @@ void jumpHero(int& mr)
 		}
 	}
 }
-//editor ziad
+//editor zeyad
 void enemy(char x[][120], int er, int ec)
 {
 	x[22 + er][3 + ec] = '[';
@@ -216,7 +224,7 @@ void enemy(char x[][120], int er, int ec)
 	x[23 + er][3 + ec] = '/';
 	x[23 + er][5 + ec] = '\\';
 }
-//editor ziad
+//editor zeyad
 // Move the enemy, we can control the range of moving by edit 50 and 60
 void moveEnemy(int& enec, int& enedir)
 {
@@ -226,10 +234,7 @@ void moveEnemy(int& enec, int& enedir)
 		enedir = 1;
 	enec += enedir;
 }
-//editor ziad
-void damage(char x[][120])
-{
-}
+//editor zeyad
 int main()
 {
 	char x[25][120];
@@ -239,18 +244,19 @@ int main()
 	border(x);
 	ladder_level1(x);
 	hero(x, mr, mc);
+	health_of_hero(x);
 	display(x);
 	for (;;)
 	{
 		while (1)
 		{
-			//Game loop while not pressing any keys 
+			// Game loop while not pressing any keys 
 			while (!_kbhit())
 				{
 					border(x);
 					ladder_level1(x);
 					hero(x, mr, mc);
-					style_health(x);
+					helth_of_hero(x);
 					jumpHero(mr);
 					enemy(x, enemyr, enemyc);
 					if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
@@ -259,12 +265,11 @@ int main()
 					}
 					display(x);
 					moveEnemy(enemyc, enemydir);
-					damage(x);
 			}
 			char movement = _getch();
 			moveHero(mr, mc, movement);
 		}
-	
+
 	}
 	return 0;
 }
