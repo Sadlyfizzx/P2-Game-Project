@@ -102,9 +102,43 @@ void hero(char x[][120], int mr, int mc)
 	x[23 + mr][4 + mc] = '\\';
 	x[23 + mr][2 + mc] = '/';
 }
-
-// editor zeyad & fares
-void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
+//editor fares
+void helth_of_hero(char x[][120])
+{
+	x[4][3] = 'H';
+	x[4][4] = 'E';
+	x[4][5] = 'A';
+	x[4][6] = 'L';
+	x[4][7] = 'T';
+	x[4][8] = 'H';
+	x[4][9] = ':';
+	x[4][10] = 221;
+	x[4][11] = 221;
+	x[4][12] = 221;
+	x[4][13] = 221;
+	x[4][14] = 221;
+	x[4][15] = 221;
+	x[4][16] = 221;
+	x[4][17] = 221;
+	x[4][18] = 221;
+	x[4][19] = 221;
+	x[4][20] = 221;
+	x[4][21] = 221;
+	x[4][22] = 221;
+	x[4][23] = 221;
+	x[4][24] = 221;
+	x[4][10] = 221;
+	x[4][11] = 221;
+	x[4][12] = 221;
+	x[4][13] = 221;
+	x[4][14] = 221;
+	x[4][25] = 221;
+	x[4][26] = '1';
+	x[4][27] = '0';
+	x[4][28] = '0';
+	x[4][29] = '%';
+}
+void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 {
 	if (c == 'a' && mc > 1) //left
 	{
@@ -355,17 +389,19 @@ int main()
 		{
 			// Game loop while not pressing any keys 
 			while (!_kbhit())
-			{
-				border(x);
-				ladder_level1(x);
-				hero(x, mr, mc);
-				jumpHero(mr);
-				enemy(x, enemyr, enemyc);
-				damage(mr, mc, enemyc, enemyr);
-				checkLose();
-				health_of_hero(x);
-				display(x);
-				moveEnemy(enemyc, enemydir);
+				{
+					border(x);
+					ladder_level1(x);
+					hero(x, mr, mc);
+					helth_of_hero(x);
+					jumpHero(mr);
+					enemy(x, enemyr, enemyc);
+					if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
+					{
+						cout << "Game Over" << endl;
+					}
+					display(x);
+					moveEnemy(enemyc, enemydir);
 			}
 			char movement = _getch();
 			moveHero(mr, mc, movement);
