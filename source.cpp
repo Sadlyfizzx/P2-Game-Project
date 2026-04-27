@@ -103,44 +103,9 @@ void hero(char x[][120], int mr, int mc)
 	x[23 + mr][2 + mc] = '/';
 }
 //editor fares
-void helth_of_hero(char x[][120])
-{
-	x[4][3] = 'H';
-	x[4][4] = 'E';
-	x[4][5] = 'A';
-	x[4][6] = 'L';
-	x[4][7] = 'T';
-	x[4][8] = 'H';
-	x[4][9] = ':';
-	x[4][10] = 221;
-	x[4][11] = 221;
-	x[4][12] = 221;
-	x[4][13] = 221;
-	x[4][14] = 221;
-	x[4][15] = 221;
-	x[4][16] = 221;
-	x[4][17] = 221;
-	x[4][18] = 221;
-	x[4][19] = 221;
-	x[4][20] = 221;
-	x[4][21] = 221;
-	x[4][22] = 221;
-	x[4][23] = 221;
-	x[4][24] = 221;
-	x[4][10] = 221;
-	x[4][11] = 221;
-	x[4][12] = 221;
-	x[4][13] = 221;
-	x[4][14] = 221;
-	x[4][25] = 221;
-	x[4][26] = '1';
-	x[4][27] = '0';
-	x[4][28] = '0';
-	x[4][29] = '%';
-}
 void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 {
-	if (c == 'a' && mc > 1)//left
+	if (c == 'a' && mc > 1) //left
 	{
 		mc -= 3;
 		if (mr < 0 && mc < 105) // If hero reaches the ladder, he won't move.
@@ -187,7 +152,8 @@ void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
 		}
 	}
 }
-//editor fares&&zeyad
+
+// editor fares & zeyad
 void jumpHero(int& mr)
 {
 	if (isJumping == 1)
@@ -214,6 +180,130 @@ void jumpHero(int& mr)
 		}
 	}
 }
+
+//editor fares & zeyad
+void health_of_hero(char x[][120])
+{
+	if (health == 100)
+	{
+
+		x[3][2] = 'H';
+		x[3][3] = 'E';
+		x[3][4] = 'A';
+		x[3][5] = 'L';
+		x[3][6] = 'T';
+		x[3][7] = 'H';
+		x[3][8] = ':';
+		x[3][9] = 221;
+		x[3][10] = 221;
+		x[3][11] = 221;
+		x[3][12] = 221;
+		x[3][13] = 221;
+		x[3][14] = 221;
+		x[3][15] = 221;
+		x[3][16] = 221;
+		x[3][17] = 221;
+		x[3][18] = 221;
+		x[3][19] = '1';
+		x[3][20] = '0';
+		x[3][21] = '0';
+		x[3][22] = '%';
+	}
+	else if (health == 80)
+	{
+		x[3][2] = 'H';
+		x[3][3] = 'E';
+		x[3][4] = 'A';
+		x[3][5] = 'L';
+		x[3][6] = 'T';
+		x[3][7] = 'H';
+		x[3][8] = ':';
+		x[3][9] = 221;
+		x[3][10] = 221;
+		x[3][11] = 221;
+		x[3][12] = 221;
+		x[3][13] = 221;
+		x[3][14] = 221;
+		x[3][15] = 221;
+		x[3][16] = 221;
+		x[3][19] = '8';
+		x[3][20] = '0';
+		x[3][21] = '%';
+	}
+	else if (health == 60)
+	{
+		x[3][2] = 'H';
+		x[3][3] = 'E';
+		x[3][4] = 'A';
+		x[3][5] = 'L';
+		x[3][6] = 'T';
+		x[3][7] = 'H';
+		x[3][8] = ':';
+		x[3][9] = 221;
+		x[3][10] = 221;
+		x[3][11] = 221;
+		x[3][12] = 221;
+		x[3][13] = 221;
+		x[3][14] = 221;
+		x[3][19] = '6';
+		x[3][20] = '0';
+		x[3][21] = '%';
+	}
+	else if (health == 40)
+	{
+		x[3][2] = 'H';
+		x[3][3] = 'E';
+		x[3][4] = 'A';
+		x[3][5] = 'L';
+		x[3][6] = 'T';
+		x[3][7] = 'H';
+		x[3][8] = ':';
+		x[3][9] = 221;
+		x[3][10] = 221;
+		x[3][11] = 221;
+		x[3][12] = 221;
+		x[3][19] = '4';
+		x[3][20] = '0';
+		x[3][21] = '%';
+	}
+	else if (health == 20)
+	{
+		x[3][2] = 'H';
+		x[3][3] = 'E';
+		x[3][4] = 'A';
+		x[3][5] = 'L';
+		x[3][6] = 'T';
+		x[3][7] = 'H';
+		x[3][8] = ':';
+		x[3][9] = 221;
+		x[3][10] = 221;
+		x[3][19] = '2';
+		x[3][20] = '0';
+		x[3][21] = '%';
+	}
+	else if (health == 0)
+	{
+		x[3][2] = 'H';
+		x[3][3] = 'E';
+		x[3][4] = 'A';
+		x[3][5] = 'L';
+		x[3][6] = 'T';
+		x[3][7] = 'H';
+		x[3][8] = ':';
+		x[3][19] = '0';
+		x[3][20] = '%';
+	}
+}
+
+// editor zeyad
+void damage(int& mr, int& mc, int& enemyc, int& enemyr)
+{
+	if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
+	{
+		health -= 20;
+	}
+}
+
 //editor zeyad
 void enemy(char x[][120], int er, int ec)
 {
@@ -224,7 +314,8 @@ void enemy(char x[][120], int er, int ec)
 	x[23 + er][3 + ec] = '/';
 	x[23 + er][5 + ec] = '\\';
 }
-//editor zeyad
+
+// editor zeyad
 // Move the enemy, we can control the range of moving by edit 50 and 60
 void moveEnemy(int& enec, int& enedir)
 {
@@ -234,7 +325,18 @@ void moveEnemy(int& enec, int& enedir)
 		enedir = 1;
 	enec += enedir;
 }
-//editor zeyad
+
+// editor zeyad
+void checkLose()
+{
+	if (health < 0)
+	{
+		cout << "Game Over" << endl;
+		exit(0);
+	}
+}
+
+// editor zeyad
 int main()
 {
 	char x[25][120];
@@ -244,6 +346,7 @@ int main()
 	border(x);
 	ladder_level1(x);
 	hero(x, mr, mc);
+	health_of_hero(x);
 	display(x);
 	for (;;)
 	{
@@ -255,7 +358,6 @@ int main()
 					border(x);
 					ladder_level1(x);
 					hero(x, mr, mc);
-					helth_of_hero(x);
 					jumpHero(mr);
 					enemy(x, enemyr, enemyc);
 					if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
