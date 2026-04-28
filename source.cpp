@@ -30,8 +30,6 @@ void display(char x[][120])
 		cout << endl;
 	}
 }
-
-// editor fares
 void border(char x[][120]) // frame
 {
 	for (int r = 0; r < 25; r++)
@@ -59,46 +57,97 @@ void border(char x[][120]) // frame
 		x[24][c] = 205;
 	}
 }
-
-// editor fares
-void ladder_level1(char x[][120]) //selm
+void ladder_level1(char x[][120])
 {
-	x[23][109] = 179;
-	x[22][109] = 179;
-	x[21][109] = 179;
-	x[20][109] = 179;
-	x[19][109] = 179;
-	x[18][109] = 179;
-	x[17][109] = 179;
-	x[16][109] = 179;
-	x[23][113] = 179;
-	x[22][113] = 179;
-	x[21][113] = 179;
-	x[20][113] = 179;
-	x[19][113] = 179;
-	x[18][113] = 179;
-	x[17][113] = 179;
-	x[16][113] = 179;
-	x[22][111] = '-';
+	x[23][105] = 179;
+	x[22][105] = 179;
+	x[21][105] = 179;
+	x[20][105] = 179;
+	x[19][105] = 179;
+	x[18][105] = 179;
+	x[17][105] = 179;
+	x[16][105] = 179;
+	x[15][105] = 179;
+	x[14][105] = 179;
+	x[13][105] = 179;
+	x[12][105] = 179;
+	x[11][105] = 179;
+	x[10][105] = 179;
+	x[23][118] = 179;
+	x[22][118] = 179;
+	x[21][118] = 179;
+	x[20][118] = 179;
+	x[19][118] = 179;
+	x[18][118] = 179;
+	x[17][118] = 179;
+	x[16][118] = 179;
+	x[15][118] = 179;
+	x[14][118] = 179;
+	x[13][118] = 179;
+	x[12][118] = 179;
+	x[11][118] = 179;
+	x[10][118] = 179;
+	x[22][106] = '-';
+	x[22][107] = '-';
+	x[22][108] = '-';
+	x[22][109] = '-';
 	x[22][110] = '-';
+	x[22][111] = '-';
 	x[22][112] = '-';
-	x[20][111] = '-';
-	x[20][110] = '-';
-	x[20][112] = '-';
-	x[18][111] = '-';
-	x[18][110] = '-';
-	x[18][112] = '-';
-	x[16][111] = '-';
+	x[22][113] = '-';
+	x[22][114] = '-';
+	x[22][115] = '-';
+	x[22][116] = '-';
+	x[22][117] = '-';	
+	x[19][106] = '-';
+	x[19][107] = '-';
+	x[19][108] = '-';
+	x[19][109] = '-';
+	x[19][110] = '-';
+	x[19][111] = '-';
+	x[19][112] = '-';
+	x[19][113] = '-';
+	x[19][114] = '-';
+	x[19][115] = '-';
+	x[19][116] = '-';
+	x[19][117] = '-';
+	x[16][106] = '-';
+	x[16][107] = '-';
+	x[16][108] = '-';
+	x[16][109] = '-';
 	x[16][110] = '-';
+	x[16][111] = '-';
 	x[16][112] = '-';
-	x[15][114] = '-';
-	x[15][115] = '-';
-	x[15][116] = '-';
-	x[15][117] = '-';
-	x[15][118] = '-';
+	x[16][113] = '-';
+	x[16][114] = '-';
+	x[16][115] = '-';
+	x[16][116] = '-';
+	x[16][117] = '-';
+	x[13][106] = '-';
+	x[13][107] = '-';
+	x[13][108] = '-';
+	x[13][109] = '-';
+	x[13][110] = '-';
+	x[13][111] = '-';
+	x[13][112] = '-';
+	x[13][113] = '-';
+	x[13][114] = '-';
+	x[13][115] = '-';
+	x[13][116] = '-';
+	x[13][117] = '-';
+	x[10][106] = '-';
+	x[10][107] = '-';
+	x[10][108] = '-';
+	x[10][109] = '-';
+	x[10][110] = '-';
+	x[10][111] = '-';
+	x[10][112] = '-';
+	x[10][113] = '-';
+	x[10][114] = '-';
+	x[10][115] = '-';
+	x[10][116] = '-';
+	x[10][117] = '-';
 }
-
-// editor fares
 void hero(char x[][120], int mr, int mc)
 {
 	if (health > 0)
@@ -112,8 +161,6 @@ void hero(char x[][120], int mr, int mc)
 		x[23 + mr][2 + mc] = '/';
 	}
 }
-
-// editor zeyad & fares
 void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 {
 	if (c == 'a' && mc > 1) //left
@@ -182,15 +229,14 @@ void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 		}
 	}
 }
-
-// editor fares & zeyad
-void jumpHero(int& mr)
+void jumpHero(int& mr,int& mc)
 {
 	if (isJumping == 1)
 	{
 		if (pos - velocety != mr && jumpdone == 0)
 		{
 			mr--;
+			mc++;
 		}
 		if (pos - velocety == mr)
 		{
@@ -214,8 +260,6 @@ void jumpHero(int& mr)
 		jumpLimit = 0;
 	}
 }
-
-//editor fares & zeyad
 void health_of_hero(char x[][120])
 {
 	if (health == 100)
@@ -328,8 +372,6 @@ void health_of_hero(char x[][120])
 		x[3][20] = '%';
 	}
 }
-
-// editor zeyad
 void damage(int& mr, int& mc, int& enemyc, int& enemyr)
 {
 	if (enemyAlive == 1)
@@ -340,8 +382,6 @@ void damage(int& mr, int& mc, int& enemyc, int& enemyr)
 		}
 	}
 }
-
-//editor zeyad
 void enemy(char x[][120], int er, int ec, int dir)
 {
 	if (enemyAlive == 1)
@@ -528,7 +568,7 @@ int main()
 	border(x);
 	ladder_level1(x);
 	hero(x, mr, mc);
-	//health_of_hero(x);
+	health_of_hero(x);
 	display(x);
 	for (;;)
 	{
@@ -540,18 +580,7 @@ int main()
 				border(x);
 				ladder_level1(x);
 				hero(x, mr, mc);
-				jumpHero(mr);
-				enemy(x, enemyr, enemyc);
-				if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
-				{
-					cout << "Game Over" << endl;
-				}
-				display(x);
-				moveEnemy(enemyc, enemydir);
-				border(x);
-				ladder_level1(x);
-				hero(x, mr, mc);
-				jumpHero(mr);
+				jumpHero(mr,mc);
 				enemy(x, enemyr, enemyc, enemydir);
 				damage(mr, mc, enemyc, enemyr);
 				killEnemy(mr, mc, enemyc, enemyr);
