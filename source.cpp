@@ -94,16 +94,230 @@ void ladder_level1(char x[][120]) //selm
 // editor fares
 void hero(char x[][120], int mr, int mc)
 {
-	x[20 + mr][3 + mc] = 153;
-	x[21 + mr][3 + mc] = 186;
-	x[21 + mr][4 + mc] = '\\';
-	x[21 + mr][2 + mc] = '/';
-	x[22 + mr][3 + mc] = 186;
-	x[23 + mr][4 + mc] = '\\';
-	x[23 + mr][2 + mc] = '/';
+	x[23 + mr][7 + mc] = '|';
+	x[23 + mr][8 + mc] = '\\';
+	x[23 + mr][9 + mc] = '_';
+	x[23 + mr][10 + mc] = '/';
+	x[23 + mr][11 + mc] = '|';
+	x[23 + mr][12 + mc] = ' ';
+	x[23 + mr][13 + mc] = '|';
+	x[23 + mr][14 + mc] = '\\';
+	x[23 + mr][15 + mc] = '_';
+	x[23 + mr][16 + mc] = '/';
+	x[23 + mr][17 + mc] = ' ';
+	x[23 + mr][18 + mc] = '|';
+
+	x[22 + mr][7 + mc] = '|';
+	x[22 + mr][8 + mc] = '\\';
+	x[22 + mr][9 + mc] = '_';
+	x[22 + mr][10 + mc] = '/';
+	x[22 + mr][11 + mc] = '|';
+	x[22 + mr][12 + mc] = ' ';
+	x[22 + mr][13 + mc] = '|';
+	x[22 + mr][14 + mc] = '\\';
+	x[22 + mr][15 + mc] = '_';
+	x[22 + mr][16 + mc] = '/';
+	x[22 + mr][17 + mc] = ' ';
+	x[22 + mr][18 + mc] = '|';
+
+	x[21 + mr][7 + mc] = '|';
+	x[21 + mr][8 + mc] = '\\';
+	x[21 + mr][9 + mc] = '_';
+	x[21 + mr][10 + mc] = '/';
+	x[21 + mr][11 + mc] = '|';
+	x[21 + mr][12 + mc] = ' ';
+	x[21 + mr][13 + mc] = '|';
+	x[21 + mr][14 + mc] = '\\';
+	x[21 + mr][15 + mc] = '_';
+	x[21 + mr][16 + mc] = '/';
+	x[21 + mr][17 + mc] = ' ';
+	x[21 + mr][18 + mc] = '|';
+
+	x[20 + mr][8 + mc] = '|';
+	x[20 + mr][12 + mc] = '\\';
+	x[20 + mr][14 + mc] = '_';
+	x[20 + mr][14 + mc] = '_';
+	x[20 + mr][15 + mc] = '/';
+	x[20 + mr][16 + mc] = ' ';
+	x[20 + mr][17 + mc] = '|';
+
+	x[19 + mr][17 + mc] = '|';
+	x[18 + mr][17 + mc] = '|';
+	x[19 + mr][18 + mc] = '\\';
+	x[19 + mr][19 + mc] = '|';
+	x[19 + mr][20 + mc] = '|';
+	x[19 + mr][21 + mc] = '|';
+	x[19 + mr][22 + mc] = '/';
+	x[18 + mr][22 + mc] = '|';
+
+	x[17 + mr][21 + mc] = '-';
+	x[16 + mr][20 + mc] = '|';
+	x[15 + mr][20 + mc] = '|';
+	x[14 + mr][20 + mc] = '|';
+	x[13 + mr][20 + mc] = '|';
+
+	x[12 + mr][20 + mc] = 191;
+	x[12 + mr][19 + mc] = '-';
+	x[12 + mr][18 + mc] = '-';
+	x[12 + mr][17 + mc] = '-';
+	x[12 + mr][16 + mc] = '-';
+	x[12 + mr][15 + mc] = '-';
+	x[12 + mr][14 + mc] = '-';
+	x[12 + mr][13 + mc] = '-';
+	x[12 + mr][12 + mc] = '-';
+	x[12 + mr][11 + mc] = '-';
+	x[12 + mr][10 + mc] = '-';
+	x[12 + mr][9 + mc] = '-';
+	x[12 + mr][8 + mc] = '-';
+	x[12 + mr][7 + mc] = '-';
+	x[12 + mr][6 + mc] = '-';
+	x[12 + mr][5 + mc] = 218;
+
+	x[13 + mr][5 + mc] = '|';
+	x[14 + mr][5 + mc] = '|';
+	x[15 + mr][5 + mc] = '|';
+	x[16 + mr][5 + mc] = '|';
+
+	x[17 + mr][4 + mc] = '-';
+	x[18 + mr][3 + mc] = '|';
+	x[19 + mr][3 + mc] = '\\';
+	x[19 + mr][4 + mc] = '|';
+	x[19 + mr][5 + mc] = '|';
+	x[19 + mr][6 + mc] = '|';
+	x[19 + mr][7 + mc] = '/';
+	x[19 + mr][8 + mc] = '|';
+
+	x[18 + mr][9 + mc] = '|';
+	x[17 + mr][7 + mc] = '\\';
+	x[17 + mr][8 + mc] = '|';
+	x[16 + mr][7 + mc] = '\\';
+	x[16 + mr][8 + mc] = '|';
+	x[15 + mr][7 + mc] = '\\';
+	x[15 + mr][8 + mc] = '|';
+	x[14 + mr][7 + mc] = '\\';
+	x[14 + mr][8 + mc] = '|';
+
+	x[14 + mr][11 + mc] = 201;
+	x[14 + mr][12 + mc] = 205;
+	x[14 + mr][13 + mc] = 205;
+	x[14 + mr][14 + mc] = 205;
+	x[14 + mr][15 + mc] = 187;
+
+	x[16 + mr][11 + mc] = 200;
+	x[16 + mr][12 + mc] = 205;
+	x[16 + mr][13 + mc] = 205;
+	x[16 + mr][14 + mc] = 205;
+	x[16 + mr][15 + mc] = 188;
+
+	x[17 + mr][10 + mc] = '/';
+	x[17 + mr][11 + mc] = '_';
+	x[17 + mr][12 + mc] = '_';
+	x[17 + mr][13 + mc] = '/';
+	x[17 + mr][14 + mc] = '\\';
+	x[17 + mr][15 + mc] = '_';
+	x[17 + mr][16 + mc] = '_';
+	x[17 + mr][17 + mc] = '\\';
+
+	x[18 + mr][11 + mc] = '/';
+	x[18 + mr][12 + mc] = '_';
+	x[18 + mr][13 + mc] = '/';
+	x[18 + mr][14 + mc] = '\\';
+	x[18 + mr][15 + mc] = '_';
+	x[18 + mr][16 + mc] = '\\';
+
+	x[19 + mr][12 + mc] = '|';
+	x[19 + mr][13 + mc] = '_';
+	x[19 + mr][14 + mc] = '_';
+	x[19 + mr][15 + mc] = '|';
+
+	x[17 + mr][18 + mc] = '|';
+	x[17 + mr][19 + mc] = '/';
+	x[16 + mr][18 + mc] = '|';
+	x[16 + mr][19 + mc] = '/';
+	x[15 + mr][18 + mc] = '|';
+	x[15 + mr][19 + mc] = '/';
+	x[14 + mr][18 + mc] = '|';
+	x[14 + mr][19 + mc] = '/';
+
+	x[11 + mr][18 + mc] = '|';
+	x[11 + mr][17 + mc] = '|';
+	x[11 + mr][15 + mc] = 217;
+	x[11 + mr][13 + mc] = '|';
+	x[11 + mr][11 + mc] = '|';
+	x[11 + mr][10 + mc] = '-';
+	x[11 + mr][7 + mc] = '|';
+	x[11 + mr][6 + mc] = '|';
+
+	x[10 + mr][12 + mc] = '-';
+	x[10 + mr][9 + mc] = '|';
+	x[10 + mr][18 + mc] = '|';
+	x[10 + mr][17 + mc] = '|';
+	x[10 + mr][7 + mc] = '|';
+	x[10 + mr][6 + mc] = '|';
+
+	x[9 + mr][10 + mc] = '-';
+	x[9 + mr][14 + mc] = '-';
+	x[9 + mr][16 + mc] = '|';
+	x[9 + mr][17 + mc] = ':';
+	x[9 + mr][18 + mc] = ':';
+	x[9 + mr][19 + mc] = ':';
+	x[9 + mr][20 + mc] = ':';
+	x[9 + mr][21 + mc] = '|';
+	x[9 + mr][8 + mc] = '|';
+	x[9 + mr][7 + mc] = 221;
+	x[9 + mr][6 + mc] = 221;
+	x[9 + mr][5 + mc] = 221;
+	x[9 + mr][4 + mc] = 221;
+	x[9 + mr][3 + mc] = '|';
+
+	x[8 + mr][12 + mc] = '-';
+
+	x[7 + mr][11 + mc] = '\\';
+	x[7 + mr][13 + mc] = '/';
+	x[7 + mr][10 + mc] = 218;
+	x[7 + mr][14 + mc] = 191;
+
+	x[6 + mr][11 + mc] = '-';
+	x[6 + mr][12 + mc] = '-';
+	x[6 + mr][13 + mc] = '-';
 }
 //editor fares
-void moveHero(int& mr, int& mc, char c)//move left,right ,upper,lower
+void helth_of_hero(char x[][120])
+{
+	x[4][3] = 'H';
+	x[4][4] = 'E';
+	x[4][5] = 'A';
+	x[4][6] = 'L';
+	x[4][7] = 'T';
+	x[4][8] = 'H';
+	x[4][9] = ':';
+	x[4][10] = 221;
+	x[4][11] = 221;
+	x[4][12] = 221;
+	x[4][13] = 221;
+	x[4][14] = 221;
+	x[4][15] = 221;
+	x[4][16] = 221;
+	x[4][17] = 221;
+	x[4][18] = 221;
+	x[4][19] = 221;
+	x[4][20] = 221;
+	x[4][21] = 221;
+	x[4][22] = 221;
+	x[4][23] = 221;
+	x[4][24] = 221;
+	x[4][10] = 221;
+	x[4][11] = 221;
+	x[4][12] = 221;
+	x[4][13] = 221;
+	x[4][14] = 221;
+	x[4][25] = 221;
+	x[4][26] = '1';
+	x[4][27] = '0';
+	x[4][28] = '0';
+	x[4][29] = '%';
+}
+void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 {
 	if (c == 'a' && mc > 1) //left
 	{
@@ -314,8 +528,6 @@ void enemy(char x[][120], int er, int ec)
 	x[23 + er][3 + ec] = '/';
 	x[23 + er][5 + ec] = '\\';
 }
-
-// editor zeyad
 // Move the enemy, we can control the range of moving by edit 50 and 60
 void moveEnemy(int& enec, int& enedir)
 {
@@ -325,8 +537,6 @@ void moveEnemy(int& enec, int& enedir)
 		enedir = 1;
 	enec += enedir;
 }
-
-// editor zeyad
 void checkLose()
 {
 	if (health < 0)
@@ -335,8 +545,6 @@ void checkLose()
 		exit(0);
 	}
 }
-
-// editor zeyad
 int main()
 {
 	char x[25][120];
@@ -346,7 +554,7 @@ int main()
 	border(x);
 	ladder_level1(x);
 	hero(x, mr, mc);
-	health_of_hero(x);
+	//health_of_hero(x);
 	display(x);
 	for (;;)
 	{
@@ -354,18 +562,28 @@ int main()
 		{
 			// Game loop while not pressing any keys 
 			while (!_kbhit())
+			{
+				border(x);
+				ladder_level1(x);
+				hero(x, mr, mc);
+				jumpHero(mr);
+				enemy(x, enemyr, enemyc);
+				if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
 				{
-					border(x);
-					ladder_level1(x);
-					hero(x, mr, mc);
-					jumpHero(mr);
-					enemy(x, enemyr, enemyc);
-					if ((23 + mr) >= (22 + enemyr) && (20 + mr) <= (23 + enemyr) && (4 + mc) >= (3 + enemyc) && (2 + mc) <= (5 + enemyc))
-					{
-						cout << "Game Over" << endl;
-					}
-					display(x);
-					moveEnemy(enemyc, enemydir);
+					cout << "Game Over" << endl;
+				}
+				display(x);
+				moveEnemy(enemyc, enemydir);
+				border(x);
+				ladder_level1(x);
+				hero(x, mr, mc);
+				jumpHero(mr);
+				enemy(x, enemyr, enemyc);
+				damage(mr, mc, enemyc, enemyr);
+				checkLose();
+				health_of_hero(x);
+				display(x);
+				moveEnemy(enemyc, enemydir);
 			}
 			char movement = _getch();
 			moveHero(mr, mc, movement);
