@@ -155,7 +155,7 @@ void ladder_level1(char x[][120]) //selm
 }
 void hero(char x[][120], int mr, int mc)
 {
-	if (health > 0)
+	if (health > 1)
 	{
 		x[20 + mr][3 + mc] = 153;
 		x[21 + mr][3 + mc] = 186;
@@ -563,7 +563,7 @@ void killEnemy(int& mr, int& mc, int enemyc, int enemyr)
 		falling = 1;
 	}
 
-	if (falling == 1 && sameCol == 1 && heroPos == enemyr)
+	if (falling == 1 && sameCol == 1 && heroPos == enemyr && enemyAlive == 1)
 	{
 		enemyAlive = 0; // kill the enemy
 
