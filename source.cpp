@@ -8,12 +8,13 @@ int isJumping = 0; // to check if the hero is jumping or not
 int isClimbing = 0; // to check if the hero is climbing or not
 int jumpdone; // to check if the jump is done or not
 int pos; // save the position of the hero when he starts jumping
-int velocety = 9; //controls jump height
+int velocety = 4; //controls jump height
 int jumpLimit = 0;
+char current_level = '1';
 
 // Player Stats //
 int health = 100;
-char current_level = '1';
+int heroDir = 1;
 
 // Enemy Stats //
 int enemyAlive = 1;
@@ -118,6 +119,7 @@ void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 {
 	if (c == 'a' && mc > 1) //left
 	{
+		heroDir = -1;
 		mc -= 3;
 		if (mr < 0 && mc < 105) // If hero reaches the ladder, he won't move.
 		{
@@ -126,6 +128,7 @@ void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 	}
 	if (c == 'd' && mc < 111) // right
 	{
+		heroDir = 1;
 		mc += 3;
 		if (mc >= 104 && mc <= 106) // The first thing he does when he reaches the stairs is take the first step.
 		{
@@ -184,13 +187,21 @@ void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 }
 
 // editor fares & zeyad
-void jumpHero(int& mr)
+void jumpHero(int& mr, int& mc)
 {
 	if (isJumping == 1)
 	{
 		if (pos - velocety != mr && jumpdone == 0)
 		{
 			mr--;
+			if (heroDir == -1)
+			{
+				mc--;
+			}
+			if (heroDir == 1)
+			{
+				mc++;
+			}
 		}
 		if (pos - velocety == mr)
 		{
@@ -201,6 +212,14 @@ void jumpHero(int& mr)
 			if (mr != 0)
 			{
 				mr++;
+				if (heroDir == -1)
+				{
+					mc--;
+				}
+				if (heroDir == 1)
+				{
+					mc++;
+				}
 			}
 		}
 		if (pos == mr && mr == 0)
@@ -546,7 +565,7 @@ int main()
 				border(x);
 				ladder_level1(x);
 				hero(x, mr, mc);
-				jumpHero(mr);
+				jumpHero(mr, mc);
 				enemy(x, enemyr, enemyc, enemydir);
 				damage(mr, mc, enemyc, enemyr);
 				killEnemy(mr, mc, enemyc, enemyr);
