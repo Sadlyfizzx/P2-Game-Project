@@ -3,12 +3,12 @@
 #include <windows.h>
 using namespace std;
 
-// Game Settings - Editor Zeyad //
+// Game Settings //
 int isJumping = 0; // to check if the hero is jumping or not
 int isClimbing = 0; // to check if the hero is climbing or not
 int jumpdone; // to check if the jump is done or not
 int pos; // save the position of the hero when he starts jumping
-int velocety = 4; //controls jump height
+int velocety = 7; //controls jump height
 int jumpLimit = 0;
 char current_level = '1';
 
@@ -31,8 +31,6 @@ void display(char x[][120])
 		cout << endl;
 	}
 }
-
-// editor fares
 void border(char x[][120]) // frame
 {
 	for (int r = 0; r < 25; r++)
@@ -46,6 +44,13 @@ void border(char x[][120]) // frame
 	{
 		x[r][0] = 186;
 		x[r][119] = 186;
+		x[9][119] = ' ';
+		x[8][119] = ' ';
+		x[7][119] = ' ';
+		x[6][119] = ' ';
+		x[5][119] = ' ';
+		x[4][119] = ' ';
+		x[3][119] = ' ';
 	}
 	x[3][55] = 'L';
 	x[3][56] = 'E';
@@ -60,9 +65,7 @@ void border(char x[][120]) // frame
 		x[24][c] = 205;
 	}
 }
-
-// editor fares
-void ladder_level1(char x[][120]) //selm
+void ladder_level1(char x[][120]) 
 {
 	x[23][105] = 179;
 	x[22][105] = 179;
@@ -236,8 +239,6 @@ void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 		}
 	}
 }
-
-// editor fares & zeyad
 void jumpHero(int& mr, int& mc)
 {
 	if (isJumping == 1)
@@ -546,7 +547,6 @@ void moveEnemy(int& enec, int& enedir)
 	enec += enedir;
 	Sleep(120);
 }
-
 void killEnemy(int& mr, int& mc, int enemyc, int enemyr)
 {
 	int heroPos = 23 + mr;
@@ -616,7 +616,6 @@ int main()
 			char movement = _getch();
 			moveHero(mr, mc, movement);
 		}
-
 	}
 	return 0;
 }
