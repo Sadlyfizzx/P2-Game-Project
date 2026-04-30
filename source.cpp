@@ -536,7 +536,7 @@ void moveEnemy(int& enec, int& enedir)
 	if (enedir == -1 && enec == 50)
 		enedir = 1;
 	enec += enedir;
-	Sleep(120);
+	Sleep(80);
 }
 void health_enemy(char x[][map_width])
 {
