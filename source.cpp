@@ -1,8 +1,7 @@
-#include <iostream>
+﻿#include <iostream>
 #include <conio.h>
 #include <windows.h>
 using namespace std;
-
 // Game Settings //
 int isJumping = 0; // to check if the hero is jumping or not
 int isClimbing = 0; // to check if the hero is climbing or not
@@ -13,29 +12,32 @@ int jumpLimit = 0;
 char current_level = '1';
 
 // Player Stats //
-int health = 100;
+int health_hero = 100;
 int heroDir = 1;
 
 // Enemy Stats //
+int Health_enemy=100;
 int enemyAlive = 1;
-
-void display(char x[][120])
+//Scrolling//
+const int map_width = 500;
+int camera_x = 0;
+void display(char x[][map_width],int camera_x)
 {
 	system("cls");
 	for (int r = 0; r < 25; r++)
 	{
-		for (int c = 0; c < 120; c++)
+		for (int c = camera_x; c < camera_x+118; c++)
 		{
 			cout << x[r][c];
 		}
 		cout << endl;
 	}
 }
-void border(char x[][120]) // frame
+void border(char x[][map_width]) 
 {
 	for (int r = 0; r < 25; r++)
 	{
-		for (int c = 0; c < 120; c++)
+		for (int c = 0; c < map_width; c++)
 		{
 			x[r][c] = ' ';
 		}
@@ -59,13 +61,13 @@ void border(char x[][120]) // frame
 	x[3][59] = 'L';
 	x[3][60] = ' ';
 	x[3][61] = current_level;
-	for (int c = 0; c < 120; c++)
+	for (int c = 0; c < map_width; c++)
 	{
 		x[0][c] = 205;
 		x[24][c] = 205;
 	}
 }
-void ladder_level1(char x[][120]) 
+void ladder_level1(char x[][map_width]) 
 {
 	x[23][105] = 179;
 	x[22][105] = 179;
@@ -156,9 +158,9 @@ void ladder_level1(char x[][120])
 	x[10][116] = '-';
 	x[10][117] = '-';
 }
-void hero(char x[][120], int mr, int mc)
+void hero(char x[][map_width], int mr, int mc)
 {
-	if (health > 1)
+	if (health_hero > 1)
 	{
 		x[20 + mr][3 + mc] = 153;
 		x[21 + mr][3 + mc] = 186;
@@ -169,36 +171,25 @@ void hero(char x[][120], int mr, int mc)
 		x[23 + mr][2 + mc] = '/';
 	}
 }
-void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
+void moveHero(int& mr, int& mc, char c) 
 {
-	if (c == 'a' && mc > 1) //left
+	if (c == 'a' && mc > 1)
 	{
 		heroDir = -1;
 		mc -= 3;
-		if (mr < 0 && mc < 105) // If hero reaches the ladder, he won't move.
-		{
-			mc += 3;
-		}
 	}
-	if (c == 'd' && mc < 111) // right
+	if (c == 'd' && mc < 97) 
 	{
 		heroDir = 1;
 		mc += 3;
-		if (mc >= 104 && mc <= 106) // The first thing he does when he reaches the stairs is take the first step.
+		if (mc >= 97)
 		{
-
-			mr -= 2;
-			mc += 3;
-
-		}
-		else if (mc > 106 && mr > -10)
-		{
-			mr -= 1;
-			mc += 2;
+			mr -= 3;
+			mc += 5;
 		}
 	}
 
-	if (c == 'w') // upper
+	if (c == 'w')
 	{
 		jumpLimit++;
 		if (jumpLimit <= 2)
@@ -231,7 +222,7 @@ void moveHero(int& mr, int& mc, char c) // move left, right, upper, and lower
 		}
 	}
 
-	if (mc > 104)
+	if (mc >= 104)
 	{
 		if (c == 's' && 3 + mc >= 108)
 		{
@@ -285,9 +276,9 @@ void jumpHero(int& mr, int& mc)
 		jumpLimit = 0;
 	}
 }
-void health_of_hero(char x[][120])
+void health_of_hero(char x[][map_width])
 {
-	if (health == 100)
+	if (health_hero == 100)
 	{
 
 		x[3][2] = 'H';
@@ -312,7 +303,7 @@ void health_of_hero(char x[][120])
 		x[3][21] = '0';
 		x[3][22] = '%';
 	}
-	else if (health == 80)
+	else if (health_hero == 80)
 	{
 		x[3][2] = 'H';
 		x[3][3] = 'E';
@@ -333,7 +324,7 @@ void health_of_hero(char x[][120])
 		x[3][20] = '0';
 		x[3][21] = '%';
 	}
-	else if (health == 60)
+	else if (health_hero == 60)
 	{
 		x[3][2] = 'H';
 		x[3][3] = 'E';
@@ -352,7 +343,7 @@ void health_of_hero(char x[][120])
 		x[3][20] = '0';
 		x[3][21] = '%';
 	}
-	else if (health == 40)
+	else if (health_hero == 40)
 	{
 		x[3][2] = 'H';
 		x[3][3] = 'E';
@@ -369,7 +360,7 @@ void health_of_hero(char x[][120])
 		x[3][20] = '0';
 		x[3][21] = '%';
 	}
-	else if (health == 20)
+	else if (health_hero == 20)
 	{
 		x[3][2] = 'H';
 		x[3][3] = 'E';
@@ -384,7 +375,7 @@ void health_of_hero(char x[][120])
 		x[3][20] = '0';
 		x[3][21] = '%';
 	}
-	else if (health == 0)
+	else if (health_hero == 0)
 	{
 		x[3][2] = 'H';
 		x[3][3] = 'E';
@@ -403,11 +394,11 @@ void damage(int& mr, int& mc, int& enemyc, int& enemyr)
 	{
 		if ((23 + mr) >= (enemyr) && (20 + mr) <= (5 + enemyr) && (4 + mc) >= (enemyc) && (2 + mc) <= (18 + enemyc))
 		{
-			health -= 20;
+			health_hero -= 20;
 		}
 	}
 }
-void enemy(char x[][120], int er, int ec, int dir)
+void enemy(char x[][map_width], int er, int ec, int dir)
 {
 	if (enemyAlive == 1)
 	{
@@ -547,6 +538,42 @@ void moveEnemy(int& enec, int& enedir)
 	enec += enedir;
 	Sleep(120);
 }
+void health_enemy(char x[][map_width])
+{
+	if (Health_enemy == 100)
+	{
+		x[3][90] = 'E';
+		x[3][91] = 'n';
+		x[3][92] = 'e';
+		x[3][93] = 'm';
+		x[3][94] = 'y';
+		x[3][95] = ':';
+		x[3][96] = 221;
+		x[3][97] = 221;
+		x[3][98] = 221;
+		x[3][99] = 221;
+		x[3][100] = 221;
+		x[3][101] = 221;
+		x[3][102] = 221;
+		x[3][103] = 221;
+		x[3][104] = 221;
+		x[3][105] = '1';
+		x[3][106] = '0';
+		x[3][107] = '0';
+		x[3][108] = '%';
+	}
+	if (Health_enemy == 0)
+	{
+		x[3][90] = 'E';
+		x[3][91] = 'n';
+		x[3][92] = 'e';
+		x[3][93] = 'm';
+		x[3][94] = 'y';
+		x[3][95] = ':';
+		x[3][107] = '0';
+		x[3][108] = '%';
+	}
+}
 void killEnemy(int& mr, int& mc, int enemyc, int enemyr)
 {
 	int heroPos = 23 + mr;
@@ -574,10 +601,14 @@ void killEnemy(int& mr, int& mc, int enemyc, int enemyr)
 		jumpdone = 0;
 		pos = mr;
 	}
+	if (enemyAlive == 0)
+	{
+		Health_enemy = 0;
+	}
 }
 void checkLose()
 {
-	if (health <= 0)
+	if (health_hero <= 0)
 	{
 		cout << "Game Over" << endl;
 		exit(0);
@@ -585,7 +616,7 @@ void checkLose()
 }
 int main()
 {
-	char x[25][120];
+	char x[25][map_width];
 	int mr = 0, mc = 0;
 	int enemyr = 18, enemyc = 55; // enemy row and column
 	int enemydir = 1; // enemy direction (1 for right, -1 for left)
@@ -593,14 +624,17 @@ int main()
 	ladder_level1(x);
 	hero(x, mr, mc);
 	health_of_hero(x);
-	display(x);
+	display(x,camera_x);
 	for (;;)
 	{
+
 		while (1)
-		{
-			// Game loop while not pressing any keys 
+		{ 
 			while (!_kbhit())
 			{
+				camera_x = mc - 60;
+				if (camera_x < 0) camera_x = 0;
+				if (camera_x > map_width - 120) camera_x = map_width - 120;
 				border(x);
 				ladder_level1(x);
 				hero(x, mr, mc);
@@ -610,7 +644,8 @@ int main()
 				killEnemy(mr, mc, enemyc, enemyr);
 				checkLose();
 				health_of_hero(x);
-				display(x);
+				health_enemy(x);
+				display(x,camera_x);
 				moveEnemy(enemyc, enemydir);
 			}
 			char movement = _getch();
