@@ -545,7 +545,7 @@ void moveEnemy(int& enec, int& enedir)
 	if (enedir == -1 && enec == 50)
 		enedir = 1;
 	enec += enedir;
-	Sleep(120);
+	Sleep(80);
 }
 void killEnemy(int& mr, int& mc, int enemyc, int enemyr)
 {
