@@ -171,62 +171,56 @@ void hero(char x[][map_width], int mr, int mc)
 		x[23 + mr][2 + mc] = '/';
 	}
 }
-void moveHero(int& mr, int& mc, char c) 
+void moveHero(int& mr, int& mc, char c)
 {
-	if (c == 'a' && mc > 1)
+	if (c == 'a' && mc > 1&&mr>=-2)
 	{
 		heroDir = -1;
 		mc -= 3;
+		if (mc >= 97)
+		{
+			mr += 2;
+			mc -= 8;
+		}
 	}
-	if (c == 'd' && mc < 97) 
+	if (c == 'd' && mc < 97)
 	{
 		heroDir = 1;
 		mc += 3;
 		if (mc >= 97)
 		{
-			mr -= 3;
-			mc += 5;
+			mr -= 2;
+			mc += 8;
 		}
 	}
-
+	if (c == 'd' && mc >= 103&&mr<=-14&&mc<119)
+	{
+			mc++;
+	}
 	if (c == 'w')
 	{
 		jumpLimit++;
-		if (jumpLimit <= 2)
+		if (jumpLimit <= 2&& mc < 97)
 		{
 			isJumping = 1;
 			jumpdone = 0;
 			pos = mr;
 		}
-
-		if (mc >= 106 && mc <= 110)
+		if (mc >= 97)
 		{
-			isClimbing = 1;
-			isJumping = 0;
-			jumpdone = 0;
+			mr -= 3;
 		}
-
-		if (isClimbing == 1)
+		if (mr <= -15)
 		{
-			mr--;
-
-			if (mr <= 15)
-			{
-				isClimbing = 0; // STOP climbing
-			}
-
-			if (mc < 106 || mc > 110)
-			{
-				isClimbing = 0;
-			}
+			mr += 3;
 		}
 	}
-
-	if (mc >= 104)
+	if (c == 's' && mc > 100)
 	{
-		if (c == 's' && 3 + mc >= 108)
+		mr+=3;
+		if (mr >= 0)
 		{
-			mr += 2;
+			mr -= 3;
 		}
 	}
 }
@@ -639,8 +633,8 @@ int main()
 				ladder_level1(x);
 				hero(x, mr, mc);
 				jumpHero(mr, mc);
-				enemy(x, enemyr, enemyc, enemydir);
-				damage(mr, mc, enemyc, enemyr);
+			//	enemy(x, enemyr, enemyc, enemydir);
+				//damage(mr, mc, enemyc, enemyr);
 				killEnemy(mr, mc, enemyc, enemyr);
 				checkLose();
 				health_of_hero(x);
